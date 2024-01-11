@@ -2,10 +2,13 @@ import streamlit as st #imports streamlit
 from openai import OpenAI
 client = OpenAI()
 import os
+import openai
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv(), override = True)
 
-os.getenv('OPEN_API_KEY')
+# os.getenv('OPEN_API_KEY')
+openai.api_key = st.secrets["OPENAI_API_KEY"]
+
 
 def create_meals(ingredients, kcal):
     prompt = f'''Create a healthy daily meal plan for breakfast, lunch, and dinner based on the following ingredients: {ingredients}. Explain each recipe.
