@@ -7,7 +7,7 @@ from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv(), override = True)
 
 # os.getenv('OPEN_API_KEY')
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+# openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 
 def create_meals(ingredients, kcal):
@@ -49,9 +49,9 @@ with st.sidebar:
     
     st.image('img1.png', width=200)
     st.header(' AI Meal Plan Generator')
-    api_key = st.text_input('OpenAI API Key:', type='password')
-    if api_key:
-        os.environ['OPENAI_API_KEY']= api_key
+    openai.api_key = st.text_input('OpenAI API Key:', type='password')
+    if openai.api_key:
+        st.secrets["OPENAI_API_KEY"]= openai.api_key
 
     
     ingredients = st.text_input(label = 'Provide a list of ingredients separated by commas:')
